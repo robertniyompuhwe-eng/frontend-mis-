@@ -54,7 +54,39 @@ button:hover {
 .card img {
   width: 100%;
   height: auto;
+}#studentsCount table {
+    width: 100%;
+    border-collapse: collapse; /* Merges borders into single lines */
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
+#studentsCount th {
+    background-color: #009879; /* Green header */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    padding: 12px 15px;
+}
+
+#studentsCount td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Zebra Stripes: style every other row */
+#studentsCount tr:nth-of-type(even) {
+    background-color: #f3f3f3; /* Light grey for even rows */
+}
+
+/* Highlight row on mouse hover */
+#studentsCount tr:hover {
+    background-color: #f1f1f1;
+}
+
 .card-title {
   font-size: 16px;
   margin: 10px 0;
