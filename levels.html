@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Levels</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="levels.html">Levels</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </aside>
+
+  <main class="content">
+    <h1>Levels</h1>
+
+    <form onsubmit="createLevel(event)">
+      <input type="text" id="levelName" placeholder="Level Name (Senior 4)" required>
+      <button>Add Level</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Action</th></tr>
+      </thead>
+      <tbody id="levelsTable"></tbody>
+    </table>
+  </main>
+</div>
+
+<script src="js/levels.js"></script>
+</body>
+</html>

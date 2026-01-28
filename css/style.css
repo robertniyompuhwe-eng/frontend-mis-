@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f6f8;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 0 5px #ccc;
+}button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+button:hover {
+  background: #1d4ed8;
+}
+.card button {
+  margin-top: 10px;
+}
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+.card-title {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.card-price {
+  color: #10b981;
+  font-weight: bold;
+}
