@@ -1,53 +1,108 @@
-const studentsTable=document.getElementById("studentsCount")
-async function fetchstudentscount (){
-    try{
-  const response=await fetch("http://localhost:3000/api/v1/students")
-  const data=await response.json()
-  studentsTable.innerHTML=`<table><tr><th>firstname</th><th>lastname</th><th>Email</th><th>gender</th></tr>` 
-for(let student of data){
-    studentsTable.innerHTML+=`<tr><td>${student.firstName}</td><td>${student.lastName}</td><td>${student.email}</td><td>${student.gender}</td></tr>`
-}
+// Get DOM elements
+const tableContainer = document.getElementById("table");
+const studentsCountEl = document.getElementById("studentsCount");
+const schoolsCountEl = document.getElementById("schoolsCount");
+const teachersCountEl = document.getElementById("teachersCount");
 
-}catch(error){const studentsTable = document.getElementById("studentsCount");
+// ------------------------
+// Helper function to fetch with token
+// ------------------------
+async function fetchWithToken(url) {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "index.html"; // redirect to login if no token
+    return;
+  }
 
-async function fetchStudentsCount() {
-    try {
-        const response = await fetch("http://localhost:3000/api/v1/students");
-        if (!response.ok) throw new Error("Network response was not ok");
-        
-        const data = await response.json();
-
-        // 1. Create the header
-        let tableHTML = `<table>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Gender</th>
-            </tr>`;
-
-        // 2. Map data to rows and join them (Faster than += in a loop)
-        const rows = data.map(student => `
-            <tr>
-                <td>${student.firstName}</td>
-                <td>${student.lastName}</td>
-                <td>${student.email}</td>
-                <td>${student.gender}</td>
-            </tr>
-        `).join("");
-
-        // 3. Combine and close the table
-        studentsTable.innerHTML = tableHTML + rows + `</table>`;
-
-    } catch (error) {
-        console.error("Fetch error:", error);
-        studentsTable.innerHTML = "There was an error fetching students.";
+  const res = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     }
+  });
+
+  if (res.status === 401) { // token invalid/expired
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+    return;
+  }
+
+  if (!res.ok) throw new Error(`Network error: ${res.status}`);
+  return await res.json();
 }
 
-fetchStudentsCount();
+// ------------------------
+// Fetch and render students table
+// ------------------------
+async function fetchStudents() {
+  try {
+    const data = await fetchWithToken("http://localhost:3000/api/v1/students");
 
-        studentsTable.innerHTML="there was an error fetching student count"
-    }
+    // Update Students card count
+    studentsCountEl.innerText = data.length;
+
+    // Build table
+    let tableHTML = `
+      <table>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Gender</th>
+        </tr>
+        ${data.map(student => `
+          <tr>
+            <td>${student.firstName}</td>
+            <td>${student.lastName}</td>
+            <td>${student.email}</td>
+            <td>${student.gender}</td>
+          </tr>
+        `).join("")}
+      </table>
+    `;
+
+    tableContainer.innerHTML = tableHTML;
+
+  } catch (error) {
+    console.error("Fetch students error:", error);
+    tableContainer.innerHTML = "<p>Error loading students</p>";
+  }
 }
-fetchstudentscount()
+
+// ------------------------
+// Fetch counts for Schools and Teachers
+// ------------------------
+async function fetchCount(url, element) {
+  try {
+    const data = await fetchWithToken(url);
+    element.innerText = data.length;
+  } catch {
+    element.innerText = "–";
+  }
+}
+
+// ------------------------
+// Logout function
+// ------------------------
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+}
+
+// ------------------------
+// Initial load
+// ------------------------
+function initDashboard() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "index.html"; // redirect if not logged in
+    return;
+  }
+
+  fetchStudents();
+  fetchCount("http://localhost:3000/api/v1/schools", schoolsCountEl);
+  fetchCount("http://localhost:3000/api/v1/teachers", teachersCountEl);
+}
+
+// Call init on page load
+initDashboard();

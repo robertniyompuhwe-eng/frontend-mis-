@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Schools - MIS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>MIS</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="schools.html" class="active">Schools</a>
+    <a href="levels.html">Levels</a>
+    <a href="classes.html">Classes</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="courses.html">Courses</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    <h1>Schools</h1>
+
+    <!-- Cards -->
+    <div class="cards" id="cards">
+      <div class="card">
+        <h3>Total Schools</h3>
+        <span id="schoolsCount">0</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <section class="table-section">
+      <h2>School List</h2>
+      <div id="table"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/schools.js"></script>
+</body>
+</html>

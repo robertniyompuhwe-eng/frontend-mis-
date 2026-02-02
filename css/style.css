@@ -1,9 +1,10 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f4f6f8;
 }
 
+/* Layout */
 .container {
   display: flex;
 }
@@ -11,87 +12,147 @@ body {
 .sidebar {
   width: 220px;
   background: #1e293b;
-  height: 100vh;
-  padding: 20px;
+  padding: 1.5rem;
+  min-height: 100vh;
+}
+
+.sidebar h2 {
+  color: white;
+  margin-bottom: 2rem;
 }
 
 .sidebar a {
   display: block;
-  color: white;
+  color: #cbd5e1;
   text-decoration: none;
-  margin: 15px 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
+.sidebar a:hover {
+  color: white;
+}
+
+/* Content */
 .content {
   flex: 1;
-  padding: 30px;
+  padding: 2rem;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  width: 150px;
+  padding: 1.5rem;
+  width: 220px;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   text-align: center;
-  box-shadow: 0 0 5px #ccc;
-}button {
-  background: #2563eb;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #475569;
+}
+
+.card span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* Table Section */
+.table-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.table-section h2 {
+  margin-bottom: 1rem;
+}
+
+/* Table */
+#table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#table th,
+#table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+#table th {
+  background: #f1f5f9;
+}
+
+#table tr:hover {
+  background: #f8fafc;
+}
+/* =========================
+   LOGIN PAGE (MIS STYLE)
+   ========================= */
+
+.login-body {
+  background: #f4f6f8; /* same background as dashboard */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box {
+  background: white;
+  width: 100%;
+  max-width: 380px;
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 1.5rem;
+  color: #1e293b; /* same as sidebar */
+}
+
+.login-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #2563eb; /* same as buttons */
   color: white;
   border: none;
-  padding: 6px 12px;
+  border-radius: 0.25rem;
+  font-size: 1rem;
   cursor: pointer;
 }
-button:hover {
+
+.login-box button:hover {
   background: #1d4ed8;
 }
-.card button {
-  margin-top: 10px;
-}
-.card-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.card img {
-  width: 100%;
-  height: auto;
-}#studentsCount table {
-    width: 100%;
-    border-collapse: collapse; /* Merges borders into single lines */
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
 
-#studentsCount th {
-    background-color: #009879; /* Green header */
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-    padding: 12px 15px;
-}
-
-#studentsCount td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #dddddd;
-}
-
-/* Zebra Stripes: style every other row */
-#studentsCount tr:nth-of-type(even) {
-    background-color: #f3f3f3; /* Light grey for even rows */
-}
-
-/* Highlight row on mouse hover */
-#studentsCount tr:hover {
-    background-color: #f1f1f1;
-}
-
-.card-title {
-  font-size: 16px;
-  margin: 10px 0;
-}
-.card-price {
-  color: #10b981;
-  font-weight: bold;
-}
