@@ -8,24 +8,29 @@
 
 <div class="container">
   <aside class="sidebar">
-    <a href="dashboard.html">Dashboard</a>
+      <a href="dashboard.html">Dashboard</a>
+    <a href="schools.html">Schools</a>
     <a href="levels.html">Levels</a>
+    <a href="classes.html">Classes</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="courses.html">Courses</a>
     <a href="#" onclick="logout()">Logout</a>
   </aside>
 
   <main class="content">
-    <h1>Levels</h1>
+    <div class="cards" id="cards">
+      <div class="card">
+        <h3>Total levels</h3>
+        <span id="levelsCount">0</span>
+      </div>
+    </div>
 
-    <form onsubmit="createLevel(event)">
-      <input type="text" id="levelName" placeholder="Level Name (Senior 4)" required>
-      <button>Add Level</button>
-    </form>
-
-    <table>
+    <table id="table">
       <thead>
-        <tr><th>Name</th><th>Action</th></tr>
+        <tr><th>Name</th><th>school</th><th>description</th></tr>
       </thead>
-      <tbody id="levelsTable"></tbody>
+      <tbody id="table1"></tbody>
     </table>
   </main>
 </div>

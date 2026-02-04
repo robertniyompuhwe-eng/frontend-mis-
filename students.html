@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Students</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="container">
   <aside class="sidebar">
+    <h2>MIS</h2>
     <a href="dashboard.html">Dashboard</a>
+    <a href="schools.html">Schools</a>
+    <a href="levels.html">Levels</a>
+    <a href="classes.html">Classes</a>
     <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="courses.html">Courses</a>
+    <a href="#" onclick="logout()">Logout</a>
   </aside>
 
   <main class="content">
-    <h1>Students</h1>
-    <button onclick="showForm()">Add Student</button>
+    <h1>schools</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Reg No</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="studentsTable"></tbody>
-    </table>
+    <!-- Cards Section -->
+    <div class="cards" id="cards">
+      <div class="card">
+        <h3>Schools</h3>
+        <span id="schoolsCount">0</span>
+      </div>
+
+    </div>
+
+    <!-- Table Section -->
+    <section class="table-section">
+      <h2>Recent Students</h2>
+      <div id="table"></div>
+    </section>
+
   </main>
 </div>
 
-<script src="js/students.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -6,9 +6,11 @@ function loadLevels() {
   })
   .then(res => res.json())
   .then(data => {
-    levelsTable.innerHTML = data.map(l => `
+    table1.innerHTML = data.map(l => `
       <tr>
         <td>${l.name}</td>
+        <td>${l.school || ''}</td>
+        <td>${l.description || ''}</td>
         <td><button onclick="deleteLevel('${l._id}')">Delete</button></td>
       </tr>
     `).join("");

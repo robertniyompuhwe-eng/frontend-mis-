@@ -83,6 +83,7 @@ body {
 /* Table */
 #table table {
   width: 100%;
+  
   border-collapse: collapse;
 }
 
@@ -94,7 +95,7 @@ body {
 }
 
 #table th {
-  background: #f1f5f9;
+  background: #808f9e48;
 }
 
 #table tr:hover {
@@ -154,5 +155,11 @@ body {
 
 .login-box button:hover {
   background: #1d4ed8;
+}
+button{
+  padding: 0.5em;
+  border-radius: 0.6em;
+  background-color: rgb(16, 124, 167);
+
 }
 
