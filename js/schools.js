@@ -34,38 +34,38 @@ async function fetchWithToken(url) {
 // ------------------------
 // Fetch and render students table
 // ------------------------
-async function fetchStudents() {
+async function fetchSchools() {
   try {
-    const data = await fetchWithToken("http://localhost:3000/api/v1/students");
+    const data = await fetchWithToken("http://localhost:3000/api/v1/schools");
 
-    // Update Students card count
-    studentsCountEl.innerText = data.length;
+    // Update Schools card count
+    schoolsCount.innerText = data.length;
 
     // Build table
     let tableHTML = `
       <table>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
           <th>Email</th>
-          <th>Gender</th>
         </tr>
-        ${data.map(student => `
+        ${data.map(school => `
           <tr>
-            <td>${student.firstName}</td>
-            <td>${student.lastName}</td>
-            <td>${student.email}</td>
-            <td>${student.gender}</td>
+            <td>${school.name}</td>
+            <td>${school.address}</td>
+            <td>${school.phone}</td>
+            <td>${school.email}</td>
           </tr>
         `).join("")}
       </table>
     `;
 
-    tableContainer.innerHTML = tableHTML;
+    table.innerHTML = tableHTML;
 
   } catch (error) {
-    console.error("Fetch students error:", error);
-    tableContainer.innerHTML = "<p>Error loading students</p>";
+    console.error("Fetch schools error:", error);
+    tableContainer.innerHTML = "<p>Error loading schools</p>";
   }
 }
 
